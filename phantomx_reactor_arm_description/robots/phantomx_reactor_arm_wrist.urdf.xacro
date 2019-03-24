@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot name="phantomx_reactor_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!-- Import URDF xacro model -->
+	<xacro:include filename="$(find phantomx_reactor_arm_description)/urdf/phantomx_reactor_wrist.urdf.xacro" />
+
+	<link name="base_footprint">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+	</link>
+	<xacro:phantomx_reactor_wrist prefix="" parent="base_footprint">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:phantomx_reactor_wrist>
+	
+
+	<gazebo>   
+	     <plugin name="gazebo_ros_controller_manager" 	filename="libgazebo_ros_controller_manager.so">
+	          <alwaysOn>true</alwaysOn>
+	          <updateRate>1000.0</updateRate>
+	          <robotNamespace>phantomx_reactor_arm</robotNamespace>
+	     </plugin>
+	</gazebo>
+
+
+
+ <transmission type="pr2_mechanism_model/SimpleTransmission" name="shoulder_yaw_trans">
+    <actuator name="shoulder_yaw_motor" />
+    <joint name="shoulder_yaw_joint" />
+    <mechanicalReduction>1.0</mechanicalReduction>
+    <motorTorqueConstant>1.0</motorTorqueConstant>
+ </transmission>              
+ 
+ <transmission type="pr2_mechanism_model/SimpleTransmission" name="shoulder_pitch_trans">
+    <actuator name="shoulder_pitch_motor" />
+    <joint name="shoulder_pitch_joint" />
+    <mechanicalReduction>1.0</mechanicalReduction>
+    <motorTorqueConstant>1.0</motorTorqueConstant>
+ </transmission>
+ 
+ <transmission type="pr2_mechanism_model/SimpleTransmission" name="elbow_pitch_trans">
+    <actuator name="elbow_pitch_motor" />
+    <joint name="elbow_pitch_joint" />
+    <mechanicalReduction>1.0</mechanicalReduction>
+    <motorTorqueConstant>1.0</motorTorqueConstant>
+ </transmission>
+
+ <transmission type="pr2_mechanism_model/SimpleTransmission" name="wrist_pitch_trans">
+    <actuator name="wrist_pitch_motor" />
+    <joint name="wrist_pitch_joint" />
+    <mechanicalReduction>1.0</mechanicalReduction>
+    <motorTorqueConstant>1.0</motorTorqueConstant>
+ </transmission>
+
+<transmission type="pr2_mechanism_model/SimpleTransmission" name="wrist_roll_trans">
+    <actuator name="wrist_roll_motor" />
+    <joint name="wrist_roll_joint" />
+    <mechanicalReduction>1.0</mechanicalReduction>
+    <motorTorqueConstant>1.0</motorTorqueConstant>
+ </transmission>
+
+
+
+</robot>

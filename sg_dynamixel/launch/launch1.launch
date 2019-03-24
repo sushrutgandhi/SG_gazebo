@@ -1,0 +1,10 @@
+<?xml version= "1.0"?>
+<launch>
+    <!-- Start shoulder joint controller -->
+    <rosparam file="$(find sg_dynamixel)/config/shoulder.yaml" command="load"/>
+    <node name="shoulder_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dxl_manager
+                --port pan_tilt_port
+                shoulder_controller"
+                          output="screen"/>
+</launch>

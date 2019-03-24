@@ -1,0 +1,9 @@
+<?xml version = "1.0"?>
+<launch>
+
+  <include file="$(find sg_moveit)/launch/demo.launch"/>
+
+  <node name="move_group_python_interface_tutorial" pkg="sg_dynamixel" type="move_group_python_interface_tutorial.py" respawn="false" output="screen">
+  </node>
+
+</launch>

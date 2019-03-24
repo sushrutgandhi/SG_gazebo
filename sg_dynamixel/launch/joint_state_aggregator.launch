@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="joint_state_aggregator" pkg="sg_dynamixel" type="joint_state_aggregator.cpp" output="screen">
+    <rosparam>
+       rate: 50
+       controllers:
+       - shoulder_yaw_joint_controller
+       - shoulder_pitch_joint_controller
+       - elbow_pitch_joint_controller
+       - wrist_pitch_joint_controller
+       - wrist_roll_joint_controller"
+        </rosparam>
+    </node>
+</launch>	

@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: sg_description
+    relative_path: urdf/sg_arm_wrist.urdf.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/SG_robot.srdf
+  CONFIG:
+    author_name: sg
+    author_email: sjgandhi@asu.edu
+    generated_timestamp: 1550275606

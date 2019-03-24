@@ -1,0 +1,86 @@
+shoulder_yaw_joint_controller:
+    controller:
+        package: dynamixel_controllers
+        module: joint_position_controller
+        type: JointPositionController
+    joint_name: shoulder_yaw_joint
+    joint_speed: 0.75
+    motor:
+        id: 1
+        init: 0
+        min: 0
+        max: 1000
+
+shoulder_pitch_joint_controller:
+    controller:
+     package: dynamixel_controllers
+     module: joint_position_controller_dual_motor
+     type: JointPositionControllerDual
+    joint_name: shoulder_pitch_joint
+    joint_speed: 0.75
+    motor_master:
+     id: 2
+     init: 63
+     min: 0
+     max: 657
+    motor_slave:
+     id: 3
+
+elbow_pitch_joint_controller:
+    controller:
+     package: dynamixel_controllers
+     module: joint_position_controller_dual_motor
+     type: JointPositionControllerDual
+    joint_name: elbow_pitch_joint
+    joint_speed: 0.75
+    motor_master:
+     id: 4
+     init: 225
+     min: 227
+     max: 820
+    motor_slave:
+     id: 5
+
+wrist_pitch_joint_controller:
+    controller:
+     package: dynamixel_controllers
+     module: joint_position_controller
+     type: JointPositionController
+    joint_name: wrist_pitch_joint
+    joint_speed: 0.75
+    motor:
+     id: 6
+     init: 0
+     min: 0
+     max: 660
+
+wrist_roll_joint_controller:
+    controller:
+     package: dynamixel_controllers
+     module: joint_position_controller
+     type: JointPositionController
+    joint_name: wrist_roll_joint
+    joint_speed: 0.75
+    motor:
+     id: 7
+     init: 0
+     min: 0
+     max: 1000
+
+gripper_revolute_joint_controller:
+    controller:
+     package: dynamixel_controllers
+     module: joint_position_controller
+     type: JointPositionController
+    joint_name: gripper_revolute_joint
+    joint_speed: 0.75
+    motor:
+     id: 8
+     init: 612
+     min: 512
+     max: 850
+
+
+ 
+
+

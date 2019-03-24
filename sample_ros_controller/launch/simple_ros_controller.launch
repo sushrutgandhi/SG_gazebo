@@ -1,0 +1,5 @@
+<launch>
+   <rosparam file="$(find simple_ros_controller_pkg)/simple_ros_controller.yaml" command="load" />
+
+   <node pkg="pr2_controller_manager" type="spawner" args="simple_ros_controller" name="my_controller_spawner" />
+</launch>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="pick_place" pkg="sg_dynamixel" type="pick_place.cpp" output="screen">
+    </node>
+   
+    <include file= "$(find sg_moveit)/launch/demo.launch"/>
+</launch>

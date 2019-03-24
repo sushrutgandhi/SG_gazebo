@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+<!-- these are the arguments you can pass this launch file, for example paused:=true -->
+
+  <arg name="world" default="empty"/> 
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+ <!-- We resume the logic in empty_world.launch -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+ <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sgrobot)/description/sg_description.urdf.xacro'" /> 
+
+ <node name="SG_robt" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model robot" />
+
+ <rosparam file="$(find sgrobot)/config/hardware_ctc.yaml" command="load"/>
+  <rosparam file="$(find sgrobot)/config/controllers_sim_ctc.yaml" command="load"/>
+ <rosparam file="$(find sgrobot)/config/joint_limits_ctc.yaml" command="load"/>
+  <rosparam file="$(find sgrobot)/config/joint_offsets_ctc.yaml" command="load"/>
+  <rosparam file="$(find sgrobot)/config/joint_names.yaml" command="load"/>
+
+	
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/SG_robot"
+		args="	state_controller
+			shoulder_yaw_joint_controller
+			shoulder_pitch_joint_controller
+			elbow_pitch_joint_controller
+			wrist_pitch_joint_controller
+			wrist_roll_joint_controller
+			gripper_right_joint_controller" />
+  
+    
+
+ 
+
+ 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+		<param name="publish_frequency" type="double" value="30.0"/>
+	</node>
+
+ 
+</launch>

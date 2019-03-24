@@ -1,0 +1,18 @@
+controller_manager_ns: controller_manager
+controller_list:
+  - name: SG_robot/arm_joint_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - shoulder_yaw_joint
+      - shoulder_pitch_joint
+      - elbow_pitch_joint
+      - wrist_pitch_joint
+      - wrist_roll_joint
+  - name: SG_robot/gripper_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - gripper_right_joint

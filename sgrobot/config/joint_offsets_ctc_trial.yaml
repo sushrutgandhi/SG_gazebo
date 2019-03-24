@@ -1,0 +1,6 @@
+SG_robot:
+  joint_offsets:
+    shoulder_yaw_joint: 0.03
+    shoulder_pitch_joint: 0.03
+    elbow_pitch_joint: 0.03
+ 

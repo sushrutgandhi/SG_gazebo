@@ -1,0 +1,49 @@
+<?xml version = "1.0"?>
+<launch>
+<arg name="paused" default="false" doc="Starts gazebo in paused mode"/>
+<arg name="gui" default="true" doc="Starts gazebo gui"/>
+<!-- startup simulated world -->
+<include file="$(find gazebo_ros)/launch/empty_world.launch">
+<arg name="world_name" default="worlds/empty.world"/>
+<arg name="paused" value="$(arg paused)"/>
+<arg name="gui" value="$(arg gui)"/>
+</include>
+
+
+  <rosparam file="$(find sgrobot)/config/hardware_ctc.yaml" command="load"/>
+  <rosparam file="$(find sgrobot)/config/controllers_sim_ctc_2.yaml" command="load"/>
+  <rosparam file="$(find sgrobot)/config/joint_limits_ctc.yaml" command="load"/>
+  <rosparam file="$(find sgrobot)/config/joint_offsets_ctc.yaml" command="load"/>
+
+<!-- send robot urdf to param server -->
+
+	
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sgrobot)/description/description_phantomx_arm.urdf.xacro'" /> 
+
+
+<!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot " respawn="false" output="screen" />
+
+
+<!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/SG_robot/joint_states]</rosparam>
+  </node>-->
+<!-- Load joint controller configurations from YAML file to parameter server -->
+  
+
+<!--<rosparam file = "$(find sgrobot)/config/computed_torque_controller.yaml" command = "load" />-->
+
+	 <node name = "controller_spawner" pkg = "controller_manager" type = "spawner" respawn = "false" output = "screen" ns = "/SG_robot" args = "state_controller robot_joint_controller" />
+
+
+         <!--<node name = "controller_spawner" pkg = "controller_manager" type = "spawner" respawn = "false" output = "screen" ns = "/SG_robot" 
+		args = " state_controller shoulder_yaw_joint_controller shoulder_pitch_joint_controller elbow_pitch_joint_controller wrist_pitch_joint_controller wrist_roll_joint_controller gripper_right_joint_controller	 " />-->
+
+	
+	<node name = "robot_state_publisher" pkg = "robot_state_publisher" type = "robot_state_publisher" respawn = "false" output = "screen">
+		<!--<param name="publish_frequency" type="double" value="30.0"/>
+	<remap from = "/joint_states" to = "/SG_robot/joint_states"/>-->	
+	</node>
+<!--<node type="rviz" name="rviz" pkg="rviz" />-->
+</launch>
