@@ -8,10 +8,10 @@ rostopic pub -1 /elbow_pitch_joint_controller/command std_msgs/Float64 -- 0
 
 rostopic pub -1 /wrist_pitch_joint_controller/command std_msgs/Float64 -- 0
 
-rostopic pub -1 /wrist_roll_joint_controller/command std_msgs/Float64 -- 0
+rostopic pub -1 /wrist_roll_joint_controller/command std_msgs/Float64 -- 0.5
 
 # 1.73 , 0.72 , 0.37 , 1.43, 1.54, 0
-points: 
+#points: 
   - 
     positions: [1.57, 1.07, 1.57, 1.85, 1.57, 0]
     velocities: []

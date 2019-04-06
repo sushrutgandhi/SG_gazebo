@@ -36,6 +36,6 @@
     <arg name="config" value="true"/>
   </include>
 
-  <!--<include file="$(find sg_moveit)/launch/default_warehouse_db.launch" />
--->
+  <include file="$(find sg_moveit)/launch/default_warehouse_db.launch" />
+
 </launch>

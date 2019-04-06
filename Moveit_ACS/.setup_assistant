@@ -1,11 +1,11 @@
 moveit_setup_assistant_config:
   URDF:
-    package: sg_description
-    relative_path: urdf/sg_arm_wrist.urdf.xacro
+    package: sgrobot
+    relative_path: description/sg_description_original.urdf.xacro
     xacro_args: "--inorder "
   SRDF:
     relative_path: config/SG_robot.srdf
   CONFIG:
-    author_name: sg
+    author_name: Sushrut
     author_email: sjgandhi@asu.edu
-    generated_timestamp: 1553720783
+    generated_timestamp: 1554521711

@@ -2,6 +2,7 @@
 <launch>
 	<rosparam file="$(find sgrobot)/config/trajectory_control.yaml" command="load"/>
 
+
   <node name="SG_robot_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/SG_robot" args="arm_joint_controller gripper_controller"/>
 

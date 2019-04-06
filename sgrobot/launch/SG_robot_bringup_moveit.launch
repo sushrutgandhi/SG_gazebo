@@ -26,7 +26,7 @@
 
 
   <!-- moveit launch file -->
-  <include file="$(find sg_moveit)/launch/moveit_planning_execution.launch" />    
+  <include file="$(find Moveit_ACS)/launch/moveit_planning_execution.launch" />    
 
 </launch>
 

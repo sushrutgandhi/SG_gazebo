@@ -14,7 +14,7 @@ rostopic pub /SG_robot/arm_joint_controller/command trajectory_msgs/JointTraject
     secs: 0
     nsecs: 0
   frame_id: ''
-joint_names: ['shoulder_yaw_joint', 'shoulder_pitch_joint', 'elbow_pitch_joint', 'wrist_pitch_joint', 'wrist_roll_joint', 'gripper_revolute_joint']
+joint_names: ['shoulder_yaw_joint', 'shoulder_pitch_joint', 'elbow_pitch_joint', 'wrist_pitch_joint', 'wrist_roll_joint']
 points: 
   - 
     positions: [3.73, 0.07, 1.57, 1.85, 1.57, 0]
